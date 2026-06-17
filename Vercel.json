@@ -3,17 +3,36 @@
   "builds": [
     {
       "src": "public/index.php",
-      "use": "vercel-php@0.7.4"
+      "use": "vercel-php@0.7.4",
+      "config": {
+        "phpIniPath": "php.ini"
+      }
     },
     {
-      "src": "public/**",
+      "src": "public/uploads/**",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "public/favicon.ico",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "public/robots.txt",
       "use": "@vercel/static"
     }
   ],
   "routes": [
     {
-      "src": "/assets/(.*)",
-      "dest": "/public/assets/$1"
+      "src": "/uploads/(.*)",
+      "dest": "/public/uploads/$1"
+    },
+    {
+      "src": "/favicon.ico",
+      "dest": "/public/favicon.ico"
+    },
+    {
+      "src": "/robots.txt",
+      "dest": "/public/robots.txt"
     },
     {
       "src": "/(.*)",
