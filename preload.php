@@ -1,5 +1,6 @@
 <?php
 
+
 /**
  * This file is part of CodeIgniter 4 framework.
  *
@@ -12,6 +13,22 @@
 use CodeIgniter\Boot;
 use Config\Paths;
 
+$writablePath = '/tmp/writable';
+ 
+$dirs = [
+    $writablePath,
+    $writablePath . '/cache',
+    $writablePath . '/logs',
+    $writablePath . '/session',
+    $writablePath . '/uploads',
+    $writablePath . '/debugbar',
+];
+ 
+foreach ($dirs as $dir) {
+    if (!is_dir($dir)) {
+        mkdir($dir, 0777, true);
+    }
+}
 /*
  *---------------------------------------------------------------
  * Sample file for Preloading

@@ -1,4 +1,5 @@
 <?php
+require __DIR__ . '/../preload.php';
 
 use CodeIgniter\Boot;
 use Config\Paths;
