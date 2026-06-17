@@ -1,0 +1,305 @@
+﻿.
+├── .github/
+│   └── workflows/
+│       ├── close-pull-request.yml
+│       └── phpunit.yml
+├── app/
+│   ├── Config/
+│   │   ├── Boot/
+│   │   ├── App.php
+│   │   ├── Autoload.php
+│   │   ├── Cache.php
+│   │   ├── Constants.php
+│   │   ├── ContentSecurityPolicy.php
+│   │   ├── Cookie.php
+│   │   ├── Cors.php
+│   │   ├── CURLRequest.php
+│   │   ├── Database.php
+│   │   ├── DocTypes.php
+│   │   ├── Email.php
+│   │   ├── Encryption.php
+│   │   ├── Events.php
+│   │   ├── Exceptions.php
+│   │   ├── Feature.php
+│   │   ├── Filters.php
+│   │   ├── ForeignCharacters.php
+│   │   ├── Format.php
+│   │   ├── Generators.php
+│   │   ├── Honeypot.php
+│   │   ├── Hostnames.php
+│   │   ├── Images.php
+│   │   ├── Kint.php
+│   │   ├── Logger.php
+│   │   ├── Migrations.php
+│   │   ├── Mimes.php
+│   │   ├── Modules.php
+│   │   ├── Optimize.php
+│   │   ├── Pager.php
+│   │   ├── Paths.php
+│   │   ├── Publisher.php
+│   │   ├── Routes.php
+│   │   ├── Routing.php
+│   │   ├── Security.php
+│   │   ├── Services.php
+│   │   ├── Session.php
+│   │   ├── Toolbar.php
+│   │   ├── UserAgents.php
+│   │   ├── Validation.php
+│   │   ├── View.php
+│   │   └── WorkerMode.php
+│   ├── Controllers/
+│   │   ├── Api/
+│   │   ├── AdminController.php
+│   │   ├── Auth.php
+│   │   ├── BaseController.php
+│   │   ├── Cart.php
+│   │   ├── Checkout.php
+│   │   ├── Home.php
+│   │   ├── HomeController.php
+│   │   └── Order.php
+│   ├── Database/
+│   │   ├── Migrations/
+│   │   └── Seeds/
+│   ├── Filters/
+│   │   ├── .gitkeep
+│   │   ├── AuthFilter.php
+│   │   └── RoleFilter.php
+│   ├── Helpers/
+│   │   └── .gitkeep
+│   ├── Language/
+│   │   ├── en/
+│   │   └── .gitkeep
+│   ├── Libraries/
+│   │   └── .gitkeep
+│   ├── Models/
+│   │   ├── .gitkeep
+│   │   ├── CartModel.php
+│   │   ├── CategoryModel.php
+│   │   ├── MedicineModel.php
+│   │   ├── OrderDetailsModel.php
+│   │   ├── OrdersModel.php
+│   │   └── UserModel.php
+│   ├── ThirdParty/
+│   │   └── .gitkeep
+│   ├── Views/
+│   │   ├── admin/
+│   │   ├── auth/
+│   │   ├── cart/
+│   │   ├── errors/
+│   │   ├── layout/
+│   │   ├── order/
+│   │   ├── product/
+│   │   ├── index.php
+│   │   └── welcome_message.php
+│   ├── .htaccess
+│   ├── Common.php
+│   └── index.html
+├── public/
+│   ├── uploads/
+│   │   ├── doctor/
+│   │   └── medicines/
+│   ├── .htaccess
+│   ├── favicon.ico
+│   ├── index.php
+│   └── robots.txt
+├── tests/
+│   ├── _support/
+│   │   ├── Database/
+│   │   ├── Libraries/
+│   │   └── Models/
+│   ├── database/
+│   │   └── ExampleDatabaseTest.php
+│   ├── session/
+│   │   └── ExampleSessionTest.php
+│   ├── unit/
+│   │   └── HealthTest.php
+│   ├── .htaccess
+│   ├── index.html
+│   └── README.md
+├── vendor/
+│   ├── bin/
+│   │   ├── php-parse
+│   │   ├── php-parse.bat
+│   │   ├── phpunit
+│   │   └── phpunit.bat
+│   ├── codeigniter4/
+│   │   └── framework/
+│   ├── composer/
+│   │   ├── autoload_classmap.php
+│   │   ├── autoload_files.php
+│   │   ├── autoload_namespaces.php
+│   │   ├── autoload_psr4.php
+│   │   ├── autoload_real.php
+│   │   ├── autoload_static.php
+│   │   ├── ClassLoader.php
+│   │   ├── installed.json
+│   │   ├── installed.php
+│   │   ├── InstalledVersions.php
+│   │   ├── LICENSE
+│   │   └── platform_check.php
+│   ├── fakerphp/
+│   │   └── faker/
+│   ├── laminas/
+│   │   └── laminas-escaper/
+│   ├── mikey179/
+│   │   └── vfsstream/
+│   ├── myclabs/
+│   │   └── deep-copy/
+│   ├── nikic/
+│   │   └── php-parser/
+│   ├── phar-io/
+│   │   ├── manifest/
+│   │   └── version/
+│   ├── phpunit/
+│   │   ├── php-code-coverage/
+│   │   ├── php-file-iterator/
+│   │   ├── php-invoker/
+│   │   ├── php-text-template/
+│   │   ├── php-timer/
+│   │   └── phpunit/
+│   ├── psr/
+│   │   ├── container/
+│   │   └── log/
+│   ├── sebastian/
+│   │   ├── cli-parser/
+│   │   ├── code-unit/
+│   │   ├── code-unit-reverse-lookup/
+│   │   ├── comparator/
+│   │   ├── complexity/
+│   │   ├── diff/
+│   │   ├── environment/
+│   │   ├── exporter/
+│   │   ├── global-state/
+│   │   ├── lines-of-code/
+│   │   ├── object-enumerator/
+│   │   ├── object-reflector/
+│   │   ├── recursion-context/
+│   │   ├── type/
+│   │   └── version/
+│   ├── symfony/
+│   │   └── deprecation-contracts/
+│   ├── theseer/
+│   │   └── tokenizer/
+│   └── autoload.php
+├── writable/
+│   ├── cache/
+│   │   └── index.html
+│   ├── debugbar/
+│   │   ├── debugbar_1772132498.371573.json
+│   │   ├── debugbar_1772132945.472915.json
+│   │   ├── debugbar_1772132946.591357.json
+│   │   ├── debugbar_1772132949.035975.json
+│   │   ├── debugbar_1772132951.860322.json
+│   │   ├── debugbar_1772133003.130441.json
+│   │   ├── debugbar_1772133003.271445.json
+│   │   ├── debugbar_1772133030.127988.json
+│   │   ├── debugbar_1772133030.318921.json
+│   │   ├── debugbar_1772133035.902894.json
+│   │   ├── debugbar_1772133039.426118.json
+│   │   ├── debugbar_1772133144.658068.json
+│   │   ├── debugbar_1772133146.799205.json
+│   │   ├── debugbar_1772133146.993656.json
+│   │   ├── debugbar_1772133153.002222.json
+│   │   ├── debugbar_1772133153.165583.json
+│   │   ├── debugbar_1772133154.174271.json
+│   │   ├── debugbar_1772133157.479624.json
+│   │   ├── debugbar_1772133162.857935.json
+│   │   ├── debugbar_1772133164.968389.json
+│   │   ├── debugbar_1772262749.153059.json
+│   │   ├── debugbar_1772262777.541672.json
+│   │   ├── debugbar_1772262780.893876.json
+│   │   ├── debugbar_1772262782.722931.json
+│   │   ├── debugbar_1772262783.696003.json
+│   │   ├── debugbar_1772262793.196535.json
+│   │   ├── debugbar_1772262797.565039.json
+│   │   ├── debugbar_1772262801.184986.json
+│   │   ├── debugbar_1772262871.565117.json
+│   │   ├── debugbar_1772262912.990485.json
+│   │   ├── debugbar_1772263147.581575.json
+│   │   ├── debugbar_1772263326.242068.json
+│   │   ├── debugbar_1772263496.351236.json
+│   │   ├── debugbar_1772263506.311478.json
+│   │   ├── debugbar_1772263679.211165.json
+│   │   ├── debugbar_1772263860.191012.json
+│   │   ├── debugbar_1772263976.876475.json
+│   │   ├── debugbar_1772265185.757390.json
+│   │   ├── debugbar_1772265199.945373.json
+│   │   ├── debugbar_1772265262.665546.json
+│   │   └── index.html
+│   ├── logs/
+│   │   ├── index.html
+│   │   ├── log-2026-02-22.log
+│   │   ├── log-2026-02-25.log
+│   │   ├── log-2026-02-26.log
+│   │   ├── log-2026-02-27.log
+│   │   └── log-2026-02-28.log
+│   ├── session/
+│   │   ├── ci_session0285c0698ec11caeaf0b86dcd7b8f2be
+│   │   ├── ci_session0aee61702f1f04ccf8e1fe71935ae8f7
+│   │   ├── ci_session16b787f341de388eec5efe44a99e4b57
+│   │   ├── ci_session234d6d4f4c3664b76807da480e21b69e
+│   │   ├── ci_session2d330e0e7e5844c19f4a641e118896cf
+│   │   ├── ci_session2f442910d1f347ccd4c302e828760271
+│   │   ├── ci_session2fd381296e09f29ed2a02ed28f2fc1bf
+│   │   ├── ci_session34d83e07503e000260e7185fd418d96a
+│   │   ├── ci_session34f2029af70c97f28ed122c37b65a210
+│   │   ├── ci_session360ff1acd01bdeba5b7e30491b060291
+│   │   ├── ci_session3bf6098fa849cb778baf6d783dd6668f
+│   │   ├── ci_session4102fe6beb6157af82cd39f7eb474a88
+│   │   ├── ci_session41f48af84c35c96c0483b34d5e2f6eca
+│   │   ├── ci_session4e677fa5bd7ce978b9c3a47b29981788
+│   │   ├── ci_session5565515a6a69d6da900f32fa436abd16
+│   │   ├── ci_session55ae4f0003f786413c2071056a13a1bd
+│   │   ├── ci_session5637c309e89f66a5fc39de92f9981de3
+│   │   ├── ci_session5d2867212a338f291276f0fcd92172c7
+│   │   ├── ci_session65f25c2ce2a5c6ef650d7e20a0df12a9
+│   │   ├── ci_session7313924329fe444fef398b1aced70036
+│   │   ├── ci_session7f5887ba872023df3909cabf2ca53d96
+│   │   ├── ci_session8b0479899ee47e9a2b97c70343da6937
+│   │   ├── ci_session8eb7418b44445ec4c5b0017206610ee5
+│   │   ├── ci_session9492e3437d2fe0efb611c866876a22d6
+│   │   ├── ci_session9771d68f8c14bddaf8fb20be44b53212
+│   │   ├── ci_session99d09504450f76705d8cc272a70093d5
+│   │   ├── ci_session9a4a43244857aa0aaac3b924d86e943a
+│   │   ├── ci_session9b0485e1eb91d3bbbc9d3167e351683b
+│   │   ├── ci_session9ebb4ee26d6f7cafce2b1b1ee3943f82
+│   │   ├── ci_sessiona177880655aca4f5a06b6271d934e9a5
+│   │   ├── ci_sessiona537dc01c3bf92a188e9ceda64a89143
+│   │   ├── ci_sessiona74ee4215bd76c59f98173ce67a13833
+│   │   ├── ci_sessionadf0ceaa951f85c173b2758b47d1eb69
+│   │   ├── ci_sessionafaa7fba4c67b3925cd1490eabb1aaa6
+│   │   ├── ci_sessionbc87e14cd7798e5d1937292778aff5a1
+│   │   ├── ci_sessionc056772b0a8265fd2919bb8903725d21
+│   │   ├── ci_sessioncc6d68dc8e0fb896cfcf106fb0719b7a
+│   │   ├── ci_sessioncc7dee7155d60c3e3265573e45fbe079
+│   │   ├── ci_sessioncf7fa75196990ac33922a70ece645c42
+│   │   ├── ci_sessiond6bc203dae2ff2e142be0853bf05f208
+│   │   ├── ci_sessionde1c1818ea56262c5b4c727c91e5819c
+│   │   ├── ci_sessiondf4687203985fbf534f9bb3e48ae0bae
+│   │   ├── ci_sessione1c3bacd9c5d49b5556264a89ac56a0d
+│   │   ├── ci_sessione8a072c590cf5ebfa8ad60cc08053d2a
+│   │   ├── ci_sessionef181f9470ccc75cdf470ecbe29f7600
+│   │   ├── ci_sessionf4d13e6e7b37327afeace4abf0d90fa3
+│   │   ├── ci_sessionf681afe20b28fba71e78b3a3648202c1
+│   │   ├── ci_sessionf6dc4d218508d36d59d1be10c23fa84e
+│   │   ├── ci_sessionfe751935e4c45ee9205a1c091d1ff637
+│   │   └── index.html
+│   ├── uploads/
+│   │   └── index.html
+│   ├── .htaccess
+│   └── index.html
+├── .env
+├── .gitattributes
+├── .gitignore
+├── builds
+├── composer.json
+├── composer.lock
+├── directory-list.txt
+├── directory-tree.txt
+├── LICENSE
+├── php.ini
+├── phpunit.xml.dist
+├── preload.php
+├── README.md
+├── spark
+└── Vercel.json
