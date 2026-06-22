@@ -1,0 +1,13 @@
+.git
+.env
+.vscode
+.idea
+ci-server.log
+php_errors.log
+tests/coverage*
+writable/cache/*
+writable/debugbar/*
+writable/logs/*
+writable/session/*
+writable/uploads/*
+vendor/

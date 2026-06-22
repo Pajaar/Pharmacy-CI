@@ -53,7 +53,7 @@ class Paths
      * for maximum security, keeping it out of the app and/or
      * system directories.
      */
-    public string $writableDirectory = '/tmp/writable';
+    public string $writableDirectory = __DIR__ . '/../../writable';
 
     /**
      * ---------------------------------------------------------------
@@ -75,4 +75,11 @@ class Paths
      * is used when no value is provided to `Services::renderer()`.
      */
     public string $viewDirectory = __DIR__ . '/../Views';
+
+    public function __construct()
+    {
+        if ((getenv('VERCEL') || getenv('VERCEL_ENV')) && is_writable('/tmp')) {
+            $this->writableDirectory = '/tmp/writable';
+        }
+    }
 }

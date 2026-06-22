@@ -1,9 +1,4 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
-require __DIR__ . '/../preload.php';
 
 use CodeIgniter\Boot;
 use Config\Paths;
@@ -57,6 +52,21 @@ require FCPATH . '../app/Config/Paths.php';
 // ^^^ Change this line if you move your application folder
 
 $paths = new Paths();
+
+$writableDirs = [
+    $paths->writableDirectory,
+    $paths->writableDirectory . DIRECTORY_SEPARATOR . 'cache',
+    $paths->writableDirectory . DIRECTORY_SEPARATOR . 'logs',
+    $paths->writableDirectory . DIRECTORY_SEPARATOR . 'session',
+    $paths->writableDirectory . DIRECTORY_SEPARATOR . 'uploads',
+    $paths->writableDirectory . DIRECTORY_SEPARATOR . 'debugbar',
+];
+
+foreach ($writableDirs as $dir) {
+    if (! is_dir($dir)) {
+        mkdir($dir, 0777, true);
+    }
+}
 
 // LOAD THE FRAMEWORK BOOTSTRAP FILE
 require $paths->systemDirectory . '/Boot.php';
