@@ -1,6 +1,7 @@
 {
   "version": 2,
   "env": {
+    "APP_BASE_URL": "https://pharmacy-ci.vercel.app/",
     "CI_ENVIRONMENT": "production"
   },
   "builds": [

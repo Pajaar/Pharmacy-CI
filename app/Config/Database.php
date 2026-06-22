@@ -194,11 +194,55 @@ class Database extends Config
     {
         parent::__construct();
 
+        $this->applyEnvironmentOverrides();
+
         // Ensure that we always set the database group to 'tests' if
         // we are currently running an automated test suite, so that
         // we don't overwrite live data on accident.
         if (ENVIRONMENT === 'testing') {
             $this->defaultGroup = 'tests';
+        }
+    }
+
+    private function applyEnvironmentOverrides(): void
+    {
+        $databaseUrl = getenv('DATABASE_URL')
+            ?: getenv('MYSQL_URL')
+            ?: '';
+
+        if ($databaseUrl !== '') {
+            $parts = parse_url($databaseUrl);
+
+            if (is_array($parts)) {
+                $this->default['hostname'] = $parts['host'] ?? $this->default['hostname'];
+                $this->default['username'] = isset($parts['user']) ? urldecode($parts['user']) : $this->default['username'];
+                $this->default['password'] = isset($parts['pass']) ? urldecode($parts['pass']) : $this->default['password'];
+                $this->default['database'] = isset($parts['path']) ? ltrim($parts['path'], '/') : $this->default['database'];
+                $this->default['port']     = isset($parts['port']) ? (int) $parts['port'] : $this->default['port'];
+                $this->default['DBDriver'] = 'MySQLi';
+            }
+        }
+
+        $overrides = [
+            'hostname' => ['DB_HOST', 'MYSQLHOST', 'MYSQL_HOST', 'database_default_hostname'],
+            'username' => ['DB_USERNAME', 'DB_USER', 'MYSQLUSER', 'MYSQL_USER', 'database_default_username'],
+            'password' => ['DB_PASSWORD', 'MYSQLPASSWORD', 'MYSQL_PASSWORD', 'database_default_password'],
+            'database' => ['DB_DATABASE', 'MYSQLDATABASE', 'MYSQL_DATABASE', 'database_default_database'],
+            'DBDriver' => ['DB_DRIVER', 'database_default_DBDriver'],
+            'port'     => ['DB_PORT', 'MYSQLPORT', 'MYSQL_PORT', 'database_default_port'],
+        ];
+
+        foreach ($overrides as $key => $names) {
+            foreach ($names as $name) {
+                $value = getenv($name);
+
+                if ($value === false || $value === '') {
+                    continue;
+                }
+
+                $this->default[$key] = $key === 'port' ? (int) $value : $value;
+                break;
+            }
         }
     }
 }

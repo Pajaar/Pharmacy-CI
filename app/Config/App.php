@@ -16,7 +16,7 @@ class App extends BaseConfig
      *
      * E.g., http://example.com/
      */
-    public string $baseURL = 'http://localhost:8080/';
+    public string $baseURL = 'https://pharmacy-ci.vercel.app/';
 
     /**
      * Allowed Hostnames in the Site URL other than the hostname in the baseURL.
@@ -209,6 +209,16 @@ class App extends BaseConfig
             && $this->baseURL !== '/'
             && ! str_starts_with($this->baseURL, 'http://localhost')
         ) {
+            return;
+        }
+
+        $configuredUrl = getenv('APP_BASE_URL')
+            ?: getenv('app_baseURL')
+            ?: '';
+
+        if ($configuredUrl !== '') {
+            $this->baseURL = rtrim((string) $configuredUrl, '/') . '/';
+
             return;
         }
 
