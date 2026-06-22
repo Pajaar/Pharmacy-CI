@@ -2,6 +2,7 @@
 
 namespace App\Filters;
 
+use App\Libraries\DemoSession;
 use CodeIgniter\Filters\FilterInterface;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
@@ -25,6 +26,8 @@ class AuthFilter implements FilterInterface
      */
     public function before(RequestInterface $request, $arguments = null)
     {
+        DemoSession::ensureLoggedIn();
+
         if (!session()->get('logged_in')) {
             return redirect()->to('/login');
         }

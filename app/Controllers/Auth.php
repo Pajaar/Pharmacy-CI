@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Libraries\DemoSession;
 use App\Models\UserModel;
 use CodeIgniter\HTTP\ResponseInterface;
 
@@ -10,10 +11,18 @@ class Auth extends BaseController
 {
     public function login()
     {
+        if (session()->get('logged_in')) {
+            return redirect()->to('/');
+        }
+
         return view('auth/login');
     }
     
     public function register(){
+        if (session()->get('logged_in')) {
+            return redirect()->to('/');
+        }
+
         return view('auth/register');
     }
     
@@ -24,12 +33,7 @@ class Auth extends BaseController
 
         if($user && password_verify($this->request->getPost('password'), $user['password_hash']))
         {
-            session()->set([
-                'user_id' => $user['id'],
-                'name' => $user['name'],
-                'role' => $user['role'],
-                'logged_in' => true
-            ]);
+            DemoSession::setUserSession($user);
 
             return redirect()->to('/');
         }

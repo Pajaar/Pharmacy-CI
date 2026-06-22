@@ -2,6 +2,7 @@
 
 namespace App\Filters;
 
+use App\Libraries\DemoSession;
 use CodeIgniter\Filters\FilterInterface;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
@@ -26,19 +27,23 @@ class RoleFilter implements FilterInterface
      */
     public function before(RequestInterface $request, $arguments = null)
     {
-         $session = session();
+        DemoSession::ensureLoggedIn();
 
-        // you may use Myth:Auth or your own auth; adjust as needed
-        $user = $session->get('user'); // or auth()->user(), etc.
+        $session = session();
+
+        $user = $session->get('user');
 
         if (! $user) {
-            return redirect()->to('/products');
+            return redirect()->to('/');
         }
 
         // roles passed in routes: ['admin', 'pharmacist']
         $allowedRoles = $arguments ?? [];
 
-        if (! in_array($user['role'] ?? null, $allowedRoles, true)) {
+        $currentRole = strtolower(trim((string) ($user['role'] ?? '')));
+        $allowedRoles = array_map(static fn ($role) => strtolower(trim((string) $role)), $allowedRoles);
+
+        if (! in_array($currentRole, $allowedRoles, true)) {
             // forbidden
             return Services::response()
                 ->setStatusCode(403)
