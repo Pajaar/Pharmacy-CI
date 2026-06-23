@@ -64,7 +64,7 @@ class DemoSession
     {
         try {
             $userModel = new UserModel();
-            $demoEmail = getenv('DEMO_USER_EMAIL') ?: 'admin@example.com';
+            $demoEmail = getenv('DEMO_USER_EMAIL') ?: 'customer1@example.com';
 
             $user = $userModel->where('email', $demoEmail)->first();
 
@@ -72,7 +72,7 @@ class DemoSession
                 return $user;
             }
 
-            $user = $userModel->where('role', 'admin')->first();
+            $user = $userModel->where('role', 'customer')->first();
 
             if ($user) {
                 return $user;

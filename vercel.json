@@ -3,7 +3,7 @@
   "env": {
     "APP_BASE_URL": "https://pharmacy-ci.vercel.app/",
     "CI_ENVIRONMENT": "production",
-    "DEMO_USER_EMAIL": "admin@example.com"
+    "DEMO_USER_EMAIL": "customer1@example.com"
   },
   "builds": [
     {
